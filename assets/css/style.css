@@ -196,7 +196,7 @@ input#progress-bar {
 .album-page.active {
     display: unset;
     transform: scale(1);
-    animation: animateIn .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: animateIn .5s ease;
 }
 .album-page {
     animation: animateOut .5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -204,7 +204,7 @@ input#progress-bar {
 
 @keyframes animateIn {
     0% {display: none; bottom: -100%;}
-    100% {display: block; bottom: 0;}
+    80% {display: block; bottom: 0;}
 }
 @keyframes animateOut {
     0% {display: block; bottom: 0;}
