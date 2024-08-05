@@ -9,7 +9,7 @@ const audioURLs = [
     "http://localhost:8000/audios/Fine.mp3",
     "http://localhost:8000/audios/Has%20To%20Be.mp3",
     "http://localhost:8000/audios/I%20Am%20Atomic.mp3",
-    "http://localhost:8000/audios/Moonlight%20Sonata.mp3",
+    "http://localhost:8000/audios/Moonlight%20Sonata.mp3"
 ];
 
 // Function to process each audio
@@ -172,12 +172,18 @@ Promise.all(audioURLs.map(processAudio))
             songDuraton.innerHTML = song?.duration;
             const currentDuration = userData?.songCurrentTime ? userData?.songCurrentTime : "0:00"; 
             ongoingDuraton.innerHTML = currentDuration;
-            thumbnail.setAttribute("src", song?.thumbnail)
+            thumbnail.setAttribute("src", song?.thumbnail);
+            const songs = document.getElementsByClassName("song");
+            for (let i = 0; i < songs.length; i++) {
+                songs[i].classList.remove("playing")
+            }
+            let currentSong = songs[userData.currentSong]
+            currentSong.classList.add("playing");
         }
 
         const playNextSong = () => {
             let currentSongId = userData.currentSong;
-            if (currentSongId < userData.songs.length) {
+            if (currentSongId < userData.songs.length - 1) {
                 currentSongId += 1;
             } else {
                 currentSongId = 0;
