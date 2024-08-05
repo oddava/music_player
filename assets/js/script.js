@@ -2,14 +2,7 @@ const jsmediatags = window.jsmediatags;
 let audios = [];
 let id = 0;
 const audioURLs = [
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/A%20Dramatic%20Irony.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/apathy.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/BAIXO.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/EMPTY%20DREAMS.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/Fine.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/Has%20To%20Be.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/I%20Am%20Atomic.mp3",
-    "https://iyf7oq2ise0fykszkb5rtq.on.drv.tw/www.hostingmyweb.com/Moonlight%20Sonata.mp3",
+    "https://drive.google.com/file/d/1eTdDzIhIRjI-srL-qbvX1g_4qsT7lAyl/view?usp=drive_link"
 ];
 
 // Function to process each audio
