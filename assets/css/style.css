@@ -194,8 +194,7 @@ input#progress-bar {
 }
 
 .album-page.active {
-    display: unset;
-    transform: scale(1);
+    display: block;
     animation: animateIn .5s ease;
 }
 .album-page {
