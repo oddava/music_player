@@ -212,7 +212,7 @@ input#progress-bar {
     appearance: none;
 }
 .album-page {
-    bottom: -100%;
+    bottom: 0;
     overflow-y: auto;
     position: absolute;
     width: 100%;
