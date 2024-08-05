@@ -2,14 +2,14 @@ const jsmediatags = window.jsmediatags;
 let audios = [];
 let id = 0;
 const audioURLs = [
-    "mysuperhosting.infinityfreeapp.com/A%20Dramatic%20Irony.mp3",
-    "mysuperhosting.infinityfreeapp.com/apathy.mp3",
-    "mysuperhosting.infinityfreeapp.com/BAIXO.mp3",
-    "mysuperhosting.infinityfreeapp.com/EMPTY%20DREAMS.mp3",
-    "mysuperhosting.infinityfreeapp.com/Fine.mp3",
-    "mysuperhosting.infinityfreeapp.com/Has%20To%20Be.mp3",
-    "mysuperhosting.infinityfreeapp.com/I%20Am%20Atomic.mp3",
-    "mysuperhosting.infinityfreeapp.com/Moonlight%20Sonata.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/A%20Dramatic%20Irony.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/apathy.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/BAIXO.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/EMPTY%20DREAMS.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/Fine.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/Has%20To%20Be.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/I%20Am%20Atomic.mp3",
+    "https://mysuperhosting.infinityfreeapp.com/Moonlight%20Sonata.mp3",
 ];
 
 // Function to process each audio
