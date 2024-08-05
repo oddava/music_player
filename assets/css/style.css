@@ -196,10 +196,8 @@ input#progress-bar {
 
 .album-page.active {
     display: block;
+    bottom: 0;
     animation: animateIn .5s ease;
-}
-.album-page {
-    animation: animateOut .5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @keyframes animateIn {
@@ -215,6 +213,7 @@ input#progress-bar {
     appearance: none;
 }
 .album-page {
+    bottom: -100%;
     overflow-y: auto;
     position: absolute;
     width: 100%;
@@ -225,6 +224,7 @@ input#progress-bar {
     border-radius: 10px;
     background: rgba(0, 0, 0, .5);
     backdrop-filter: blur(15px);
+    animation: animateOut .5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .album-page div {
     background-color: rgba(0, 0, 0, .8);
