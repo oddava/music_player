@@ -202,7 +202,7 @@ input#progress-bar {
 
 @keyframes animateIn {
     0% {display: none; bottom: -100%;}
-    80% {display: block; bottom: 350px;}
+    80% {display: block; bottom: -350px;}
 }
 @keyframes animateOut {
     0% {display: block; bottom: 0;}
