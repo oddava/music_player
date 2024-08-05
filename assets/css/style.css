@@ -196,13 +196,13 @@ input#progress-bar {
 
 .album-page.active {
     display: block;
-    animation: animateIn .5s ease;
     bottom: auto;
+    animation: animateIn .5s ease;
 }
 
 @keyframes animateIn {
     0% {display: none; bottom: -100%;}
-    80% {display: block; bottom: -350px;}
+    80% {display: block; bottom: 0;}
 }
 @keyframes animateOut {
     0% {display: block; bottom: 0;}
