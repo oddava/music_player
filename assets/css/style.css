@@ -196,7 +196,6 @@ input#progress-bar {
 
 .album-page.active {
     display: block;
-    bottom: -20%;
     animation: animateIn .5s ease;
 }
 
