@@ -2,14 +2,14 @@ const jsmediatags = window.jsmediatags;
 let audios = [];
 let id = 0;
 const audioURLs = [
-    "http://localhost:8000/audios/A%20Dramatic%20Irony.mp3",
-    "http://localhost:8000/audios/apathy.mp3",
-    "http://localhost:8000/audios/BAIXO.mp3",
-    "http://localhost:8000/audios/EMPTY%20DREAMS.mp3",
-    "http://localhost:8000/audios/Fine.mp3",
-    "http://localhost:8000/audios/Has%20To%20Be.mp3",
-    "http://localhost:8000/audios/I%20Am%20Atomic.mp3",
-    "http://localhost:8000/audios/Moonlight%20Sonata.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/A%20Dramatic%20Irony.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/apathy.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/BAIXO.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/EMPTY%20DREAMS.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/Fine.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/Has%20To%20Be.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/I%20Am%20Atomic.mp3",
+    "https://github.com/oddava/music_player/blob/main/my-audio-server/assets/audios/Moonlight%20Sonata.mp3",
 ];
 
 // Function to process each audio
