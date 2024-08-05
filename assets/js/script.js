@@ -9,7 +9,7 @@ const audioURLs = [
     "http://localhost:8000/audios/Fine.mp3",
     "http://localhost:8000/audios/Has%20To%20Be.mp3",
     "http://localhost:8000/audios/I%20Am%20Atomic.mp3",
-    "http://localhost:8000/audios/Moonlight%20Sonata.mp3"
+    "http://localhost:8000/audios/Moonlight%20Sonata.mp3",
 ];
 
 // Function to process each audio
