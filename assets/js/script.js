@@ -70,8 +70,8 @@ Promise.all(audioURLs.map(processAudio))
         let userData = {
             songs: [...audios],
             currentSong: null,
-            songCurrentTime: null,
             duration: 0,
+            songCurrentTime: null,
         };
 
         const playButton = document.querySelector(".play");
@@ -161,24 +161,20 @@ Promise.all(audioURLs.map(processAudio))
                     document.querySelector("#songs").appendChild(music)
         })
        }
-
         const sortSongs = () => {
             userData.songs.sort((a, b) => a.title.localeCompare(b.title));        
             userData.songs.forEach((song, index) => {
                 song.id = index;
             });
         }
-
         // Render the song info to the screen
         const renderSong = () => {
-            sortSongs()
+            sortSongs();
+            progressBar.value = 0;
             if (!document.querySelector("li.song")) renderPlaylist();
-            if (progressBar.value != '0') progressBar.value = '0';
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
-            document.querySelector("body").style.cssText = `
-            background-image: url(${song?.thumbnail});`
-
+            document.querySelector("body").style.cssText = `background-image: url(${song?.thumbnail});`
             title.innerHTML = song?.title;
             artist.innerHTML = song?.artist;
             songDuraton.innerHTML = song?.duration;
@@ -206,11 +202,6 @@ Promise.all(audioURLs.map(processAudio))
 
         }
         const playPreviousSong = () => {
-            if (playButton.classList.contains("active")) {
-                pauseButton.classList.add("active");
-                playButton.classList.remove("active");
-            }
-
             let currentSongId = userData.currentSong;
             if (currentSongId > 0) {
                 currentSongId -= 1;
@@ -222,19 +213,17 @@ Promise.all(audioURLs.map(processAudio))
             userData.duration = song.duration;
             playSong(currentSongId);
         }
-
         userData.currentSong = 0;
-        renderSong()
+        renderSong();
 
         // - Event listeners - //
-
         audio.addEventListener('timeupdate', () => {
             const progress = (audio.currentTime / audio.duration) * 100;
+            userData.songCurrentTime = formatDuration(audio.currentTime);
             progressBar.style.setProperty('--progress-width', `${progress}%`);
             progressBar.value = progress;
             const currentTime = formatDuration(audio.currentTime);
             ongoingDuraton.innerHTML = currentTime;
-            userData.songCurrentTime = currentTime;
 
             if (currentTime===userData.duration) {
                 renderSong();
