@@ -34,50 +34,11 @@ const processAudio = (song) => {
                         id: id,
                         title: title,
                         artist: artist,
+                        album: album,
                         duration: `${formatDuration(duration)}`,
                         src: song,
                         thumbnail: picture ? `data:image/jpeg;base64,${arrayBufferToBase64(picture.data)}` : null,
                     });
-
-                    let music = document.createElement("li");
-                    music.classList.add(`song`);
-                    music.classList.add(`song-${id}`);
-
-                    let musicId = document.createElement("span");
-                    musicId.classList.add("id");
-                    music.appendChild(musicId)
-
-                    let musicTitle = document.createElement("span");
-                    musicTitle.classList.add("music-title");
-
-                    let titleMusic = document.createElement("p")
-                    titleMusic.classList.add("title")
-                    
-                    let artistMusic = document.createElement("p")
-                    artistMusic.classList.add("artist")
-
-                    music.appendChild(musicTitle)
-                    musicTitle.appendChild(titleMusic)
-                    musicTitle.appendChild(artistMusic)
-
-                    let musicAlbum = document.createElement("span");
-                    musicAlbum.classList.add("album")
-                    let musicDuration = document.createElement("span");
-                    musicDuration.classList.add("duration")
-
-
-                    musicAlbum.innerHTML = album;
-                    musicDuration.innerHTML = formatDuration(duration);
-                    musicId.innerHTML = id;
-                    titleMusic.innerHTML = title;
-                    artistMusic.innerHTML = artist;
-
-
-                    music.appendChild(musicAlbum)
-                    music.appendChild(musicDuration)
-
-                    document.querySelector("#songs").appendChild(music)
-
                     id += 1;
                     resolve();
                 });
@@ -96,7 +57,7 @@ const processAudio = (song) => {
 Promise.all(audioURLs.map(processAudio))
     .then(() => {
         console.log("All audio data loaded.");
-        console.log("Audios:", audios);
+        // console.log("Audios:", audios);
 
         let userData = {
             songs: [...audios],
@@ -105,9 +66,6 @@ Promise.all(audioURLs.map(processAudio))
             duration: 0,
         };
 
-        console.log("User Data:", userData);
-
-        const playpause = document.querySelector(".playpause");
         const playButton = document.querySelector(".play");
         const pauseButton = document.querySelector(".pause");
 
@@ -163,8 +121,66 @@ Promise.all(audioURLs.map(processAudio))
             }
         };
 
+       const renderPlaylist = () => {
+        userData.songs.forEach((audio) => {
+            let id = audio.id;
+            let album = audio.album;
+            let duration = audio.duration;
+            let title = audio.title;
+            let artist = audio.artist;
+
+            let music = document.createElement("li");
+                    music.classList.add(`song`);
+                    music.classList.add(`song-${id}`);
+
+                    let musicId = document.createElement("span");
+                    musicId.classList.add("id");
+                    music.appendChild(musicId)
+
+                    let musicTitle = document.createElement("span");
+                    musicTitle.classList.add("music-title");
+
+                    let titleMusic = document.createElement("p")
+                    titleMusic.classList.add("title")
+                    
+                    let artistMusic = document.createElement("p")
+                    artistMusic.classList.add("artist")
+
+                    music.appendChild(musicTitle)
+                    musicTitle.appendChild(titleMusic)
+                    musicTitle.appendChild(artistMusic)
+
+                    let musicAlbum = document.createElement("span");
+                    musicAlbum.classList.add("album")
+                    let musicDuration = document.createElement("span");
+                    musicDuration.classList.add("duration")
+
+
+                    musicAlbum.innerHTML = album;
+                    musicDuration.innerHTML = duration;
+                    musicId.innerHTML = id;
+                    titleMusic.innerHTML = title;
+                    artistMusic.innerHTML = artist;
+
+
+                    music.appendChild(musicAlbum)
+                    music.appendChild(musicDuration)
+
+                    document.querySelector("#songs").appendChild(music)
+        })
+       }
+
+        const sortSongs = () => {
+            userData.songs.sort((a, b) => a.title.localeCompare(b.title));        
+            userData.songs.forEach((song, index) => {
+                song.id = index;
+            });
+        }
+
         // Render the song info to the screen
         const renderSong = () => {
+            sortSongs()
+            if (!document.querySelector("li.song")) renderPlaylist();
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
             title.innerHTML = song?.title;
@@ -179,6 +195,7 @@ Promise.all(audioURLs.map(processAudio))
             }
             let currentSong = songs[userData.currentSong]
             currentSong.classList.add("playing");
+            // console.log("User Data:", userData);
         }
 
         const playNextSong = () => {
