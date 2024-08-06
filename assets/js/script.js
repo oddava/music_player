@@ -16,7 +16,8 @@ const audioURLs = [
     "https://dl.dropboxusercontent.com/scl/fi/4uholk5hywj919eu8hjc9/On-My-Own.mp3?rlkey=3rog9bb4kipo2xfrk3exi6667&st=rmovf8bj&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/t9xabtzjr0lp3r76f2fob/Sea-Of-Problems.mp3?rlkey=buu0615mu9wixel37rxyp3447&st=hp9wobfu&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/yaxez8fh6t1orb7wi3eug/this-feeling.mp3?rlkey=a0bgvq6f55steay2gukhwlsgq&st=54oh3kkf&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/p3d4v621y09y2gea9m103/unravel-Slow-Version-From_-_Tokyo-Ghoul_.mp3?rlkey=j2mxnvfjefs7f3rpnnrmb229z&st=2uwc749o&dl=0"
+    "https://dl.dropboxusercontent.com/scl/fi/p3d4v621y09y2gea9m103/unravel-Slow-Version-From_-_Tokyo-Ghoul_.mp3?rlkey=j2mxnvfjefs7f3rpnnrmb229z&st=2uwc749o&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/k7adb8lxuvk5wdju4fi0i/Roi-Instrumental.mp3?rlkey=fcsqmj1xlt96co227cpfwty6q&st=72kwd2j6&dl=0"
 ];
 
 // Function to process each audio
