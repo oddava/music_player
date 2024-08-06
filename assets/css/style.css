@@ -6,16 +6,14 @@
 }
 
 :root {
-    --primary-100:#6A00FF;
-    --primary-200:#a64aff;
-    --primary-300:#ffb1ff;
-    --accent-100:#00E5FF;
-    --accent-200:#00829b;
+    --primary:#a64aff;
+    --accent-100:#fff;
+    --accent-200:#ebebeb;
     --text-100:#FFFFFF;
     --text-200:#e0e0e0;
-    --bg-100:#1A1A1A;
+    --bg-100: rgba(0, 0, 0, .5);
     --bg-200:#292929;
-    --bg-300:#404040;
+    --bg-300:#4d4d4d;
 }
 
 html {
@@ -24,6 +22,11 @@ html {
 
 body {
     background: var(--bg-200);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(30px);
+    transition: all .2s;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -37,19 +40,11 @@ body {
     width: 50rem;
     max-height: 75rem;
     background: var(--bg-100);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 0 12px rgba(0, 0, 0, .1);
     overflow-y: hidden;
 }
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
-
 header {
     width: 100%;
     height: 10rem;
@@ -57,16 +52,19 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 25px;
+    .menu-icon {
+        visibility: hidden;
+    }
 }
 header svg {
-    fill: var(--text-200);
+    fill: var(--accent-200);
     height: 3.5rem;
     cursor: pointer;
     transition: .2s ease;
 }
 
 header svg:hover {
-    fill: var(--text-100);
+    fill: var(--accent-100);
 }
 
 header h1 {
@@ -126,6 +124,7 @@ header h1 {
 }
 
 input#progress-bar {
+    position: relative;
     -webkit-user-drag: none;
     -webkit-appearance: none;
     appearance: none;
@@ -134,15 +133,27 @@ input#progress-bar {
     background: var(--bg-300);
     border-radius: 4px;
     cursor: pointer;
+    z-index: 1;
+}
+input#progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--progress-width, 0%);
+    transition-delay: 0ms;
+    background: #fff;
+    z-index: 2;
 }
 #progress-bar::-webkit-slider-thumb {
     user-select: none;
     -webkit-user-drag: none;
     -webkit-appearance: none;
     background: var(--accent-100);
-    width: .6rem;
-    height: 1.5rem;
-    border-radius: 5px;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
 }
 
 .controls {
@@ -166,14 +177,10 @@ input#progress-bar {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    border: 3px solid var(--primary-100);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: .3s all ease;
-}
-.playpause:hover {
-    box-shadow: 0 0 5px var(--primary-200);
+    transition: .15s ease;
 }
 .playpause svg {
     margin: 0;
@@ -183,15 +190,16 @@ input#progress-bar {
 .play, .pause {
     display: none;
 }
-.active {
-    display: block;
-}
 .controls svg {
     fill: var(--accent-200);
     transition: .3s ease;
 }
 .controls svg:hover {
     fill: var(--accent-100);
+}
+
+.playpause .active {
+    display: block;
 }
 
 .album-page.active {
@@ -272,7 +280,7 @@ input#progress-bar {
 
 .song.playing {
     border-radius: 5px;
-    border: 1px solid var(--primary-100);
+    border: 1px solid var(--primary);
     background: rgba(130, 47, 255, 0.1);
 }
 

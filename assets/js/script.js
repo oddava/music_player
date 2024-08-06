@@ -10,6 +10,14 @@ const audioURLs = [
     "http://localhost:8000/audios/Has%20To%20Be.mp3",
     "http://localhost:8000/audios/I%20Am%20Atomic.mp3",
     "http://localhost:8000/audios/Moonlight%20Sonata.mp3",
+    "http://localhost:8000/audios/unravel%20-%20Slow%20Version%20(From_%20_Tokyo%20Ghoul_).mp3",
+    "http://localhost:8000/audios/Sea%20Of%20Problems.mp3",
+    "http://localhost:8000/audios/On%20My%20Own.mp3",
+    "http://localhost:8000/audios/Lost%20Umbrella.mp3",
+    "http://localhost:8000/audios/GigaChad%20Theme%20-%20Phonk%20House%20Version.mp3",
+    "http://localhost:8000/audios/ecstacy.mp3",
+    "http://localhost:8000/audios/this%20feeling.mp3",
+
 ];
 
 // Function to process each audio
@@ -102,6 +110,7 @@ Promise.all(audioURLs.map(processAudio))
 
                 audio.addEventListener('timeupdate', () => {
                     const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.setProperty('--progress-width', `${progress}%`);
                     progressBar.value = progress;
                     const currentTime = formatDuration(audio.currentTime);
                     ongoingDuraton.innerHTML = currentTime;
@@ -123,7 +132,7 @@ Promise.all(audioURLs.map(processAudio))
 
        const renderPlaylist = () => {
         userData.songs.forEach((audio) => {
-            let id = audio.id;
+            let id = audio.id + 1;
             let album = audio.album;
             let duration = audio.duration;
             let title = audio.title;
@@ -183,6 +192,9 @@ Promise.all(audioURLs.map(processAudio))
             if (!document.querySelector("li.song")) renderPlaylist();
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
+            document.querySelector("body").style.cssText = `
+            background-image: url(${song?.thumbnail});`
+
             title.innerHTML = song?.title;
             artist.innerHTML = song?.artist;
             songDuraton.innerHTML = song?.duration;
@@ -265,7 +277,7 @@ Promise.all(audioURLs.map(processAudio))
         document.querySelectorAll(`.song`).forEach((e) => {
             let classname = e.className.split(' ')[1]
             const song = document.querySelector(`.${classname}`)
-            const songId = classname.split("-")[1];
+            const songId = classname.split("-")[1] - 1;
             song.addEventListener("click", () => {
                 playSong(songId);
                 renderSong();
@@ -302,4 +314,5 @@ window.addEventListener("DOMContentLoaded", () => {
     playlistIcon.addEventListener("click", () => {
         albumPage.classList.toggle("active")
     })
+    document.querySelector("#progress-bar").value = 0;
 })
