@@ -2,22 +2,21 @@ const jsmediatags = window.jsmediatags;
 let audios = [];
 let id = 0;
 const audioURLs = [
-    "http://localhost:8000/audios/A%20Dramatic%20Irony.mp3",
-    "http://localhost:8000/audios/apathy.mp3",
-    "http://localhost:8000/audios/BAIXO.mp3",
-    "http://localhost:8000/audios/EMPTY%20DREAMS.mp3",
-    "http://localhost:8000/audios/Fine.mp3",
-    "http://localhost:8000/audios/Has%20To%20Be.mp3",
-    "http://localhost:8000/audios/I%20Am%20Atomic.mp3",
-    "http://localhost:8000/audios/Moonlight%20Sonata.mp3",
-    "http://localhost:8000/audios/unravel%20-%20Slow%20Version%20(From_%20_Tokyo%20Ghoul_).mp3",
-    "http://localhost:8000/audios/Sea%20Of%20Problems.mp3",
-    "http://localhost:8000/audios/On%20My%20Own.mp3",
-    "http://localhost:8000/audios/Lost%20Umbrella.mp3",
-    "http://localhost:8000/audios/GigaChad%20Theme%20-%20Phonk%20House%20Version.mp3",
-    "http://localhost:8000/audios/ecstacy.mp3",
-    "http://localhost:8000/audios/this%20feeling.mp3",
-
+    "https://dl.dropboxusercontent.com/scl/fi/0ibntrbhhs6q4gzfmht6b/BAIXO.mp3?rlkey=weotx6k0900vi698x05z6ktyz&st=c10ia2nt&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/jocjyj17a1nww4yhbbi0r/A-Dramatic-Irony.mp3?rlkey=y1b341xz6n52zsust78fc5cke&st=pdvr3vkd&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/92prriduaaww2hn3gd8za/apathy.mp3?rlkey=t7uepatyykjdzdn24pytytd3f&st=pkhn530x&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/m9spstcdk1jzwubzsxtm3/ecstacy.mp3?rlkey=qiksyngz5jtd23m4idjghf3oe&st=v5bujwkx&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/hoeb21l0qjlmgfp74xud6/EMPTY-DREAMS.mp3?rlkey=dfoyudp2m5n1fdcyjwfbbml0m&st=3s2e1ttz&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/9u2qxm9r8kmrt071yjy6u/Fine.mp3?rlkey=zd8pvdxhxp8icn85x5pvqr3nz&st=w56we9f0&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/34u2dlbzn7brqx4gton3x/GigaChad-Theme-Phonk-House-Version.mp3?rlkey=bka4esew6of7uwicup37fea37&st=e0aqril6&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/blwqfhbwtgxzof00bcdd3/Has-To-Be.mp3?rlkey=f5iofe2xfbz86k7q8mwqjzpcm&st=muy4cyd0&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/sln1jw5ppc35w7s2bf5ds/I-Am-Atomic.mp3?rlkey=mh90henl4oymt76ksznhmotxs&st=dx5yfae7&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/2ywvi1x3jbiaaexqen5bv/Lost-Umbrella.mp3?rlkey=cw090ge63t3vd0msr00pnyk6i&st=2uxbntjg&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/ehkiwv0889akzooonk5cl/Moonlight-Sonata.mp3?rlkey=j22frc8cz8j9h7y09l5fay9t3&st=aqmubuej&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/4uholk5hywj919eu8hjc9/On-My-Own.mp3?rlkey=3rog9bb4kipo2xfrk3exi6667&st=rmovf8bj&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/t9xabtzjr0lp3r76f2fob/Sea-Of-Problems.mp3?rlkey=buu0615mu9wixel37rxyp3447&st=hp9wobfu&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/yaxez8fh6t1orb7wi3eug/this-feeling.mp3?rlkey=a0bgvq6f55steay2gukhwlsgq&st=54oh3kkf&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/p3d4v621y09y2gea9m103/unravel-Slow-Version-From_-_Tokyo-Ghoul_.mp3?rlkey=j2mxnvfjefs7f3rpnnrmb229z&st=2uwc749o&dl=0"
 ];
 
 // Function to process each audio
@@ -65,6 +64,7 @@ const processAudio = (song) => {
 Promise.all(audioURLs.map(processAudio))
     .then(() => {
         console.log("All audio data loaded.");
+        document.querySelector(".loader-body").style.display = "none";
         // console.log("Audios:", audios);
 
         let userData = {

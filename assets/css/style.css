@@ -21,6 +21,7 @@ html {
 }
 
 body {
+    position: relative;
     background: var(--bg-200);
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,6 +33,34 @@ body {
     align-items: center;
     justify-content: center;
     overflow-y: hidden;
+}
+
+.loader-body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: var(--bg-100);
+    backdrop-filter: blur(30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader::after {
+    content: "Loading audios";
+    font-size: 6rem;
+    color: var(--text-100);
+    animation: animateLoading 3s ease infinite;
+}
+
+@keyframes animateLoading {
+    0%{content: "Loading audios"; color: #a64aff;}
+    25%{content: "Loading audios."; color: aqua;}
+    50%{content: "Loading audios.."; color: blue;}
+    75%{content: "Loading audios..."; color: brown;}
+    100%{content: "Loading audios"; color: #a64aff;}
 }
 
 #main {
