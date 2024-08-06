@@ -107,24 +107,7 @@ Promise.all(audioURLs.map(processAudio))
                 console.log("Now playing:", song.title);
                 userData.currentSong = id;
                 userData.duration = song.duration;
-
-                audio.addEventListener('timeupdate', () => {
-                    const progress = (audio.currentTime / audio.duration) * 100;
-                    progressBar.style.setProperty('--progress-width', `${progress}%`);
-                    progressBar.value = progress;
-                    const currentTime = formatDuration(audio.currentTime);
-                    ongoingDuraton.innerHTML = currentTime;
-                    userData.songCurrentTime = currentTime;
-        
-                    if (currentTime===userData.duration) {
-                        renderSong();
-                        playNextSong();
-                    }
-                });
-                progressBar.addEventListener('input', () => {
-                    const seekTime = (progressBar.value / 100) * audio.duration;
-                    audio.currentTime = seekTime;
-                });
+                renderSong();
             } else {
                 console.log(`Song with id ${id} not found`);
             }
@@ -190,6 +173,7 @@ Promise.all(audioURLs.map(processAudio))
         const renderSong = () => {
             sortSongs()
             if (!document.querySelector("li.song")) renderPlaylist();
+            if (progressBar.value != '0') progressBar.value = '0';
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
             document.querySelector("body").style.cssText = `
@@ -219,7 +203,7 @@ Promise.all(audioURLs.map(processAudio))
             }
             userData.currentSong = currentSongId;
             playSong(currentSongId);
-            renderSong();
+
         }
         const playPreviousSong = () => {
             if (playButton.classList.contains("active")) {
@@ -237,13 +221,30 @@ Promise.all(audioURLs.map(processAudio))
             userData.currentSong = currentSongId;
             userData.duration = song.duration;
             playSong(currentSongId);
-            renderSong();
         }
 
         userData.currentSong = 0;
         renderSong()
 
-        // - Events - //
+        // - Event listeners - //
+
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.setProperty('--progress-width', `${progress}%`);
+            progressBar.value = progress;
+            const currentTime = formatDuration(audio.currentTime);
+            ongoingDuraton.innerHTML = currentTime;
+            userData.songCurrentTime = currentTime;
+
+            if (currentTime===userData.duration) {
+                renderSong();
+                playNextSong();
+            }
+        });
+        progressBar.addEventListener('input', () => {
+            const seekTime = (progressBar.value / 100) * audio.duration;
+            audio.currentTime = seekTime;
+        });
 
         //  Play and pause buttons
         playButton.classList.add("active")
@@ -259,7 +260,6 @@ Promise.all(audioURLs.map(processAudio))
                     currentSongId = userData.currentSong;
                 }
                 playSong(currentSongId);
-                renderSong()
             }
         });
         pauseButton.addEventListener("click", () => {
@@ -280,11 +280,9 @@ Promise.all(audioURLs.map(processAudio))
             const songId = classname.split("-")[1] - 1;
             song.addEventListener("click", () => {
                 playSong(songId);
-                renderSong();
                 document.querySelector(".album-page").classList.toggle("active")
             })
         })
-        //end
     })
     .catch((error) => {
         console.error('Error loading audio data:', error);
@@ -314,5 +312,4 @@ window.addEventListener("DOMContentLoaded", () => {
     playlistIcon.addEventListener("click", () => {
         albumPage.classList.toggle("active")
     })
-    document.querySelector("#progress-bar").value = 0;
 })
