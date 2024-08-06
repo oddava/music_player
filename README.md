@@ -22,7 +22,7 @@ Glassmorph Music Player is a modern, stylish music player with a cool glassmorph
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/glassmorph-music-player.git
+   git clone https://github.com/oddava/music_player
    cd glassmorph-music-player
 2. Navigate to the project directory:
     ```sh
