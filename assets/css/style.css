@@ -196,24 +196,24 @@ input#progress-bar {
 
 .album-page.active {
     display: block;
-    bottom: auto;
-    animation: animateIn .5s ease;
+    right: 0;
+    animation: animateIn .4s ease;
 }
 
 @keyframes animateIn {
-    0% {display: none; bottom: -100%;}
-    80% {display: block; bottom: 0;}
+    0% {display: none; right: -100%;}
+    80% {display: block; right: 0;}
 }
 @keyframes animateOut {
-    0% {display: block; bottom: 0;}
-    100% {display: none; bottom: -100%;}
+    0% {display: block; right: 0;}
+    100% {display: none; right: -100%;}
 }
 ::-webkit-scrollbar {
     display: none;
     appearance: none;
 }
 .album-page {
-    bottom: 0;
+    right: -100%;
     overflow-y: auto;
     position: absolute;
     width: 100%;
