@@ -94,7 +94,7 @@ Promise.all(audioURLs.map(processAudio))
         // - Functions - //
         // Play song
         const playSong = (id) => {
-            id = Number(id)
+            id = Number(id);
             if (playButton.classList.contains("active")) {
                 pauseButton.classList.add("active");
                 playButton.classList.remove("active");
@@ -103,11 +103,14 @@ Promise.all(audioURLs.map(processAudio))
             if (song) {
                 if (audio.src !== song.src) {
                     audio.src = song.src;
+                    audio.load();
                 }
                 audio.play();
                 console.log("Now playing:", song.title);
                 userData.currentSong = id;
                 userData.duration = song.duration;
+                // document.querySelector("#progress-bar").value = 0;  // Reset progress bar value
+                // progressBar.style.setProperty('--progress-width', '0%');  // Reset progress bar thumb
                 renderSong();
             } else {
                 console.log(`Song with id ${id} not found`);
@@ -171,7 +174,8 @@ Promise.all(audioURLs.map(processAudio))
         // Render the song info to the screen
         const renderSong = () => {
             sortSongs();
-            progressBar.value = 0;
+            progressBar.style.setProperty('--progress-width', `${0}%`);
+            document.getElementById("progress-bar").value = 0;
             if (!document.querySelector("li.song")) renderPlaylist();
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
@@ -222,7 +226,7 @@ Promise.all(audioURLs.map(processAudio))
             const progress = (audio.currentTime / audio.duration) * 100;
             userData.songCurrentTime = formatDuration(audio.currentTime);
             progressBar.style.setProperty('--progress-width', `${progress}%`);
-            progressBar.value = progress;
+            progressBar.value = !isNaN(progress) ? Math.floor(progress) : 0;
             const currentTime = formatDuration(audio.currentTime);
             ongoingDuraton.innerHTML = currentTime;
 
@@ -296,7 +300,6 @@ function formatDuration(duration) {
 
 window.addEventListener("DOMContentLoaded", () => {
     const albumPage = document.querySelector(".album-page")
-
     const playlistIcon = document.getElementById("playlistIcon")
 
     playlistIcon.addEventListener("click", () => {
