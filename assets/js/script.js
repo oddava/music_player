@@ -109,8 +109,6 @@ Promise.all(audioURLs.map(processAudio))
                 console.log("Now playing:", song.title);
                 userData.currentSong = id;
                 userData.duration = song.duration;
-                // document.querySelector("#progress-bar").value = 0;  // Reset progress bar value
-                // progressBar.style.setProperty('--progress-width', '0%');  // Reset progress bar thumb
                 renderSong();
             } else {
                 console.log(`Song with id ${id} not found`);
@@ -174,8 +172,6 @@ Promise.all(audioURLs.map(processAudio))
         // Render the song info to the screen
         const renderSong = () => {
             sortSongs();
-            progressBar.style.setProperty('--progress-width', `${0}%`);
-            document.getElementById("progress-bar").value = 0;
             if (!document.querySelector("li.song")) renderPlaylist();
             const currentSongId = userData.currentSong;
             const song = userData.songs.find((song) => song.id === currentSongId);
@@ -225,7 +221,7 @@ Promise.all(audioURLs.map(processAudio))
         audio.addEventListener('timeupdate', () => {
             const progress = (audio.currentTime / audio.duration) * 100;
             userData.songCurrentTime = formatDuration(audio.currentTime);
-            progressBar.style.setProperty('--progress-width', `${progress}%`);
+            progressBar.style.setProperty('--progress-width', `${Math.floor(progress)}%`);
             progressBar.value = !isNaN(progress) ? Math.floor(progress) : 0;
             const currentTime = formatDuration(audio.currentTime);
             ongoingDuraton.innerHTML = currentTime;
