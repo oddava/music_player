@@ -119,17 +119,17 @@ header h1 {
 .audioDetails {
     width: 100%;
     margin-top: 2rem;
-    padding: 0 2rem;
+    padding: 0 3rem;
     text-align: center;
     h2.song-title {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
         color: var(--text-100);
         font-weight: 600;
         line-height: 1.2;
         margin-bottom: 1rem;
     }
     p.song-artist {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         color: var(--text-200);
         font-weight: 500;
         user-select: none;
