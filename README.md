@@ -25,7 +25,7 @@ Glassmorph Music Player is a modern, stylish music player with a cool glassmorph
    git clone https://github.com/oddava/music_player
 2. Navigate to the project directory:
     ```sh
-    cd glassmorph-music-player
+    cd music_player
     ```
 2. Open the `index.html` file in your web browser.
 
