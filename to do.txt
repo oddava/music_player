@@ -1,0 +1,6 @@
+- replace songs with another
+- shuffle/repeat
+- add custom songs
+- create custom playlists
+- add a creative visualizer
+- save user's choices to localstorage

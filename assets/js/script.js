@@ -2,22 +2,18 @@ const jsmediatags = window.jsmediatags;
 let audios = [];
 let id = 0;
 const audioURLs = [
-    "https://dl.dropboxusercontent.com/scl/fi/0ibntrbhhs6q4gzfmht6b/BAIXO.mp3?rlkey=weotx6k0900vi698x05z6ktyz&st=c10ia2nt&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/jocjyj17a1nww4yhbbi0r/A-Dramatic-Irony.mp3?rlkey=y1b341xz6n52zsust78fc5cke&st=pdvr3vkd&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/92prriduaaww2hn3gd8za/apathy.mp3?rlkey=t7uepatyykjdzdn24pytytd3f&st=pkhn530x&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/m9spstcdk1jzwubzsxtm3/ecstacy.mp3?rlkey=qiksyngz5jtd23m4idjghf3oe&st=v5bujwkx&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/hoeb21l0qjlmgfp74xud6/EMPTY-DREAMS.mp3?rlkey=dfoyudp2m5n1fdcyjwfbbml0m&st=3s2e1ttz&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/9u2qxm9r8kmrt071yjy6u/Fine.mp3?rlkey=zd8pvdxhxp8icn85x5pvqr3nz&st=w56we9f0&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/34u2dlbzn7brqx4gton3x/GigaChad-Theme-Phonk-House-Version.mp3?rlkey=bka4esew6of7uwicup37fea37&st=e0aqril6&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/blwqfhbwtgxzof00bcdd3/Has-To-Be.mp3?rlkey=f5iofe2xfbz86k7q8mwqjzpcm&st=muy4cyd0&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/sln1jw5ppc35w7s2bf5ds/I-Am-Atomic.mp3?rlkey=mh90henl4oymt76ksznhmotxs&st=dx5yfae7&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/2ywvi1x3jbiaaexqen5bv/Lost-Umbrella.mp3?rlkey=cw090ge63t3vd0msr00pnyk6i&st=2uxbntjg&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/ehkiwv0889akzooonk5cl/Moonlight-Sonata.mp3?rlkey=j22frc8cz8j9h7y09l5fay9t3&st=aqmubuej&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/4uholk5hywj919eu8hjc9/On-My-Own.mp3?rlkey=3rog9bb4kipo2xfrk3exi6667&st=rmovf8bj&dl=0",
     "https://dl.dropboxusercontent.com/scl/fi/t9xabtzjr0lp3r76f2fob/Sea-Of-Problems.mp3?rlkey=buu0615mu9wixel37rxyp3447&st=hp9wobfu&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/yaxez8fh6t1orb7wi3eug/this-feeling.mp3?rlkey=a0bgvq6f55steay2gukhwlsgq&st=54oh3kkf&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/p3d4v621y09y2gea9m103/unravel-Slow-Version-From_-_Tokyo-Ghoul_.mp3?rlkey=j2mxnvfjefs7f3rpnnrmb229z&st=2uwc749o&dl=0",
-    "https://dl.dropboxusercontent.com/scl/fi/k7adb8lxuvk5wdju4fi0i/Roi-Instrumental.mp3?rlkey=fcsqmj1xlt96co227cpfwty6q&st=72kwd2j6&dl=0"
+    "https://dl.dropboxusercontent.com/scl/fi/k7adb8lxuvk5wdju4fi0i/Roi-Instrumental.mp3?rlkey=fcsqmj1xlt96co227cpfwty6q&st=72kwd2j6&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/ma1bueq2q04070q0hcsvm/Her-Eyes.mp3?rlkey=cmiu2hw7nsrtlo866n5ediavw&st=7qbn05dt&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/qbgmjv4fukbhvsgjulcwi/amour-plastique-slowed-reverb.mp3?rlkey=2ahejd44dzjb8cxr2pg1teaox&st=l79xk4pg&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/2elib6yctgzqfy5i64y81/Sea-Of-Problems-2.mp3?rlkey=x48f1e7baqvpk55l4ce85b8wz&st=w80ae5mq&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/2a5ix06i7lwr416x7paav/GYPSY-WOMAN-x-METAMORPHOSIS.mp3?rlkey=362vd9mvgpde77qhd4fp1fi5y&st=0g23teir&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/xj41nywccyyafc0oydhtl/Past.mp3?rlkey=ddgqq3h0ucv8rwozel5qvtkvc&st=xerupvxd&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/i7inr0kvaja8icmf8bbfc/September-Instrumental-Sped-Up.mp3?rlkey=zcp5hlidkk9cxohbzjcnzsfns&st=e1anb725&dl=0",
+    "https://dl.dropboxusercontent.com/scl/fi/ydrs98dgabjhd5tr7lrld/Link-Start.mp3?rlkey=okx3300dkjt9mjnnald8f9p7p&st=xp2osrw8&dl=0"
 ];
 
 // Function to process each audio
