@@ -58,6 +58,10 @@ const processAudio = (song) => {
 // Load all audio data
 Promise.all(audioURLs.map(processAudio))
     .then(() => {
+        Particles.init({
+            selector: '.background',
+            color: '#fff',
+          });
         console.log("All audio data loaded.");
         document.querySelector(".loader-body").style.display = "none";
         // console.log("Audios:", audios);
